@@ -20,6 +20,7 @@ public class LoadMapAction extends Action{
 		public ActionForward execute(final ActionMapping mapping, final ActionForm form, final HttpServletRequest req,
 				final HttpServletResponse res) {
 			final int id = Integer.parseInt(req.getParameter("id"));
+//TA MAMAN
 
 			@SuppressWarnings("unchecked")
 			final Map<String, Integer> map = (HashMap<String, Integer>) req.getSession().getAttribute(
