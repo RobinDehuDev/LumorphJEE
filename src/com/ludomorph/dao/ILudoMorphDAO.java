@@ -1,4 +1,4 @@
-package com.javaquarium.dao;
+package com.ludomorph.dao;
 
 import java.util.List;
 

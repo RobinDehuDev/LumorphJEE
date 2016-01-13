@@ -1,7 +1,10 @@
-package com.javaquarium.beans.web;
+package com.ludomorph.beans.web;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class LevelVO {
-	private String level;
+	private List<List<Character>> level;
 	private String name;
 	private int width;
 
@@ -16,7 +19,7 @@ public class LevelVO {
 	 * @param name
 	 * @param width
 	 */
-	public LevelVO(String level, String name, int width) {
+	public LevelVO(List<List<Character>> level, String name, int width) {
 		super();
 		this.level = level;
 		this.name = name;
@@ -29,26 +32,31 @@ public class LevelVO {
 	 *  generate first Map Test
 	 */
 	public void generateTest001(){
-		level = "DevTest001";
+		name = "DevTest001";
 		width = 240;
-		level = "";
-		for(int i = 0 ; i < 135 ; i++){
-			for(int j = 0 ; j < 240 ; j++)
-				level += '0';
+		level = new ArrayList<List<Character>>();
+		List<Character> line = new ArrayList<Character>();
+		for(int i = 0 ; i < 135 ; i++){			
+			for(int j = 0 ; j < 240 ; j++){
+				line.add('0');
+			}
+			
+			level.add(new ArrayList<Character>(line));
+			line.clear();
 		}
 	}
 
 	/**
 	 * @return the level
 	 */
-	public String getLevel() {
+	public List<List<Character>> getLevel() {
 		return level;
 	}
 
 	/**
 	 * @param level the level to set
 	 */
-	public void setLevel(String level) {
+	public void setLevel(List<List<Character>> level) {
 		this.level = level;
 	}
 

@@ -5,45 +5,11 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
 <struts-config>
 
 	<!-- Définition des Formulaires -->
-	<form-beans type="org.apache.struts.action.ActionFormBean">
-		<form-bean name="loginForm" type="com.javaquarium.beans.web.LoginVO" />
-		<form-bean name="addFish" type="com.javaquarium.beans.web.PoissonVO" />
-	</form-beans>
 
 	<!-- Définition des Actions -->
 	<action-mappings type="org.apache.struts.action.ActionMapping">
-		<action path="/listerEspece" type="com.javaquarium.action.ListerEspeceAction">
-			<forward name="success" path="/jsp/UC01_especes.jsp" />
-		</action>
-
-		<action path="/login" input="/jsp/UC00_login.jsp" scope="request"
-			name="loginForm" type="com.javaquarium.action.LoginAction">
-
-			<forward name="success" path="/listerEspece.do" redirect="true" />
-			<forward name="failed" path="/jsp/UC00_login.jsp" redirect="false" />
-		</action>
-
-		<action path="/addFish" type="com.javaquarium.action.AddFishAction">
-			<forward name="success" path="/listerEspece.do" />
-		</action>
-
-		<action path="/suppFish" type="com.javaquarium.action.SuppFishAction">
-			<forward name="success" path="/listerEspece.do" />
-		</action>
-
-		<action path="/flush" type="com.javaquarium.action.FlushAction">
-			<forward name="success" path="/listerEspece.do" />
-		</action>
-
-		<action path="/save" type="com.javaquarium.action.SaveAction">
-			<forward name="success" path="/listerEspece.do" />
-		</action>
-
-		<action path="/ajout" input="/jsp/UC02_ajout.jsp" scope="request"
-			name="addFish" type="com.javaquarium.action.AjoutAction">
-
-			<forward name="success" path="/listerEspece.do" />
-			<forward name="failed" path="/jsp/UC02_ajout.jsp" />
+		<action path="/loadLevel" type="com.ludomorph.action.LoadMapAction">
+			<forward name="success" path="/jsp/LM00_editLevel.jsp" />
 		</action>
 	</action-mappings>
 
