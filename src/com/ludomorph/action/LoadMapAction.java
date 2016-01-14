@@ -1,5 +1,6 @@
 package com.ludomorph.action;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +12,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.ludomorph.beans.web.LevelVO;
+import com.ludomorph.beans.web.TypeVO;
 
 
 
@@ -25,7 +27,16 @@ public class LoadMapAction extends Action{
 		req.getSession().setAttribute(SessionConstantNames.EDITLEVELMAPNAME, map.getName());
 		req.getSession().setAttribute(SessionConstantNames.EDITLEVELMAPWIDTH, map.getWidth());
 		
-		System.out.println(count(map.getLevel()));
+		List<TypeVO> types = new ArrayList<TypeVO>();
+		types.add(new TypeVO(0,"vide"));
+		types.add(new TypeVO(1,"plateform"));
+		types.add(new TypeVO(2,"départ"));
+		types.add(new TypeVO(3,"arrivée"));
+		types.add(new TypeVO(4,"mechant"));
+		types.add(new TypeVO(5,"piege"));
+		
+		req.getSession().setAttribute(SessionConstantNames.EDITLEVELOBJECTDATA, types);
+		
 		
 
 
@@ -35,14 +46,6 @@ public class LoadMapAction extends Action{
 	}
 	
 	
-	//test
-	private int count(List<List<Character>> test){
-		int r =0;
-		for(int i = 0 ; i < test.size() ; i++){
-			r+= test.get(i).size();
-		}
-		
-		return r;
-	}
+	
 
 }

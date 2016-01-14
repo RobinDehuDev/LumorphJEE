@@ -33,11 +33,11 @@ public class LevelVO {
 	 */
 	public void generateTest001(){
 		name = "DevTest001";
-		width = 240;
+		width = 10;
 		level = new ArrayList<List<Character>>();
 		List<Character> line = new ArrayList<Character>();
-		for(int i = 0 ; i < 135 ; i++){			
-			for(int j = 0 ; j < 240 ; j++){
+		for(int i = 0 ; i < 5 ; i++){			
+			for(int j = 0 ; j < 10 ; j++){
 				line.add('0');
 			}
 			
