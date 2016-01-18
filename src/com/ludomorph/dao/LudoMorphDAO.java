@@ -21,7 +21,7 @@ public class LudoMorphDAO implements ILudoMorphDAO{
 	 * @return instance of LudomMorphDAO
 	 */
 	
-	public static LudoMorphDAO getInstance(Class<?> type) {
+	public static LudoMorphDAO getInstance() {
 		
 		if (instance == null) {
 			instance = new LudoMorphDAO();			

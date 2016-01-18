@@ -22,7 +22,13 @@
 		<property name="use_sql_comments">true</property>
 
 		<!-- Fichiers à mapper -->
-		<mapping class="com.ludomorph.beans.data.AquariumDO" />
+		<mapping class="com.ludomorph.beans.data.UserDO" />
+		<mapping class="com.ludomorph.beans.data.TypeDO" />
+		<mapping class="com.ludomorph.beans.data.LevelDO" />
+		<mapping class="com.ludomorph.beans.data.MusicDO" />
+		<mapping class="com.ludomorph.beans.data.SpriteDO" />
+		
+		
 
 
 
