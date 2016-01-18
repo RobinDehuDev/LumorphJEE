@@ -1,0 +1,41 @@
+@CHARSET "ISO-8859-1";
+
+
+/* Chargement des differentes polices */
+
+		@font-face { 
+		  font-family: 'Caviar_Bold'; 
+		  src: url('../font_family/Caviar/Caviar_Dreams_Bold.ttf'); 
+		}
+		
+		@font-face { 
+		  font-family: 'Munro'; 
+		  src: url('../font_family/Munro/Munro.ttf'); 
+		}
+
+
+/* CSS menu */
+
+		#menu {
+			float:left;
+			font-size: 25px;
+			font-family: 'Munro';
+			background: rgba(0,0,0,0.7);
+		}
+		
+		#menu a:hover {
+		    color: black;
+		    text-decoration: none;
+		}
+		#menu .pure-menu-heading{
+			color: white;
+			margin: 2%;
+		}
+		
+		#menu .pure-menu-item{
+			margin: 2%;
+		}
+		
+		#menu .pure-menu-link{
+			color:rgb(220,220,220);
+		}
