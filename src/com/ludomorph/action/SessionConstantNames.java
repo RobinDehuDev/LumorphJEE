@@ -7,9 +7,7 @@ public class SessionConstantNames {
 	}
 
 	//jsp : editlevel
-	static public String EDITLEVELMAPNAME = "mapName";
-	static public String EDITLEVELMAPWIDTH = "mapWidth";
-	static public String EDITLEVELMAPDATA = "mapData";
+	static public String EDITLEVELMAP = "mapLevel";
 	static public String EDITLEVELOBJECTDATA = "objectsData";
 
 }
