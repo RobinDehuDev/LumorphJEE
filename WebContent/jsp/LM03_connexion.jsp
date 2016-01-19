@@ -27,6 +27,5 @@
 	<div >
 		<a href="">inscription</a>
 	</div>
-	<html:errors />
 	
 </html:form>

@@ -21,7 +21,7 @@ body{
 /* CSS TOP_PAGE */
 
 		#top_page{
-			height:30%;
+			height:25%;
 			width:100%;
 		}
 		
@@ -66,13 +66,18 @@ body{
 		height:100%;
 		background:blue;
 		float:right;
+		text-align:center;
+		font-size: 50px;
+		font-family: 'Munro';
+		background: rgba(0,0,0,0.7);
+		color:white;
 	}
 	
 	
 /* bottom page */
 
 	#bottom_page{
-		height:70%;
+		height:75%;
 	}
 	
 	

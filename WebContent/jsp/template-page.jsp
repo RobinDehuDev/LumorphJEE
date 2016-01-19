@@ -17,7 +17,7 @@
 			<jsp:include page="/jsp/LM03_connexion.jsp" />
 		</div>
 		<div id="header_container">
-		<h1>HA QUE LE TITRE</h1>
+		<h1>LUDOMORPH</h1>
 		</div>
 	</div>
 	<div id="bottom_page">
