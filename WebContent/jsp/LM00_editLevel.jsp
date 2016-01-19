@@ -63,6 +63,7 @@
 <title><bean:message key="message.editLevel.title" /></title>
 </head>
 <body>
+
 	<html:form action="editMap">
 	<h1>
 		<bean:message key="message.editLevel.title" />
