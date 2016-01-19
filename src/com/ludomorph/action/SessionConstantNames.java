@@ -9,5 +9,6 @@ public class SessionConstantNames {
 	//jsp : editlevel
 	static public String EDITLEVELMAP = "mapLevel";
 	static public String EDITLEVELOBJECTDATA = "objectsData";
+	static public String FORWARD_SUCCESS = "success";
 
 }

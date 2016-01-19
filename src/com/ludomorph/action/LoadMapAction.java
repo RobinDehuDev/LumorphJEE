@@ -22,6 +22,7 @@ public class LoadMapAction extends Action{
 	public ActionForward execute(final ActionMapping mapping, final ActionForm form, final HttpServletRequest req,
 			final HttpServletResponse res) {
 		LevelVO map = new LevelVO();
+		
 		map.generateTest001();
 		
 		req.getSession().setAttribute(SessionConstantNames.EDITLEVELMAP, map);

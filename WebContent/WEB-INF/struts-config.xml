@@ -9,24 +9,38 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
 		<form-bean name="editMap" type="com.ludomorph.beans.web.LevelVO" />
 		<form-bean name="editLine" type="com.ludomorph.beans.web.LevelLineVO" />
 		<form-bean name="editTestMap" type="com.ludomorph.beans.web.LevelVO" />
+		<form-bean name="connexion" type="com.ludomorph.beans.web.ConnexionVO" />
 	</form-beans>
 
 	<!-- Définition des Actions -->
 	<action-mappings type="org.apache.struts.action.ActionMapping">
 		<action path="/loadLevel" type="com.ludomorph.action.LoadMapAction">
-			<forward name="success" path="/jsp/LM00_editLevel.jsp" />
+			<forward name="success" path="/jsp/template-page.jsp" />
 		</action>
+		
+		<action path="/template" type="com.ludomorph.action.MenuAction">
+			<forward name="success" path="/jsp/template-page.jsp" />
+			<forward name="loadLevel" path="/loadLevel.do" />
+		</action>
+		
+		<action path="/connexion" input="/jsp/template-page.jsp" name="connexion" type="com.ludomorph.action.ConnexionAction">
+			<forward name="success" path="/jsp/template-page.jsp" />
+		</action>
+		
 		<action path="/editMap" type="com.ludomorph.action.LoadMapAction" scope="request"
 			name="editMap">
 			<forward name="success" path="/jsp/LM00_editLevel.jsp" />
 		</action>
+		
 		<action path="/test" type="com.ludomorph.action.TestAction">
 			<forward name="success" path="/jsp/formTest.jsp" />
 		</action>
+		
 		<action path="/editLine" type="com.ludomorph.action.TestAction" scope="request"
 			name="editLine">
 			<forward name="success" path="/jsp/formTest.jsp" />
 		</action>
+		
 		<action path="/editTestMap" type="com.ludomorph.action.TestAction" scope="request"
 			name="editLine">
 			<forward name="success" path="/jsp/formTest.jsp" />
