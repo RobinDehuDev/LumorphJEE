@@ -3,6 +3,7 @@ package com.ludomorph.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -60,11 +61,6 @@ public class LudoMorphDAO implements ILudoMorphDAO{
 		
 	}
 
-	@Override
-	public <T> List<T> get() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public <T> void update(T obj) {
@@ -78,6 +74,35 @@ public class LudoMorphDAO implements ILudoMorphDAO{
 		t.commit();
 		// Fermeture de la session Hibernate
 		s.close();	
+	}
+
+	@Override
+	public <T> List get(String table, List<String>columns, List<String> args) {
+		// TODO Auto-generated method stub
+		Session s = HibernateUtils.getSession();
+		// Début de la transaction
+		Transaction tx = s.beginTransaction();
+		
+		// Création de la requête
+		String request = "from " + table + " where ";
+		for(int i=0; i<columns.size();i++)
+		{
+				request += columns.get(i) + "=:" + args.get(i);
+				
+				if(i!=columns.size()-1)
+					request += " and ";
+		}
+		Query q = s.createQuery(request);
+		
+		for(int i=0; i<args.size();i++)
+		{
+			q.setParameter(args.get(i), args.get(i));
+		}
+		
+		// Récupération de la liste des résultats
+		List list = q.list();
+
+		return list;
 	}
 
 }

@@ -13,8 +13,14 @@
 </head>
 <body>
 	<div id="top_page">
-		<div id="connexion_container">
-			<jsp:include page="/jsp/LM03_connexion.jsp" />
+	
+		<div id="connection_container">
+		<logic:equal name="connect" value="connected">
+			<jsp:include page="/jsp/LM05_connected.jsp" />
+		</logic:equal>
+		<logic:notEqual name="connect" value="connected">
+			<jsp:include page="/jsp/LM03_connection.jsp" />
+		</logic:notEqual>
 		</div>
 		<div id="header_container">
 		<h1>LUDOMORPH</h1>
@@ -33,8 +39,14 @@
 			<jsp:include page="/jsp/LM00_editLevel.jsp" />
 		</logic:equal>
 		
-			
-
+		<logic:equal name="page" value="7">
+			<jsp:include page="/jsp/LM04_registration.jsp" />
+		</logic:equal>
+		
+		<logic:equal name="page" value="8">
+			<jsp:include page="/jsp/LM06_registration_done.jsp" />
+		</logic:equal>
+		
 		</div>
 	</div>
 </body>

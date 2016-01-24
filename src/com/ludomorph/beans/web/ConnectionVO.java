@@ -15,35 +15,34 @@ import org.apache.struts.action.ActionMessage;
  * @author Delplanque Kévin
  * 
  */
-public class ConnexionVO extends ActionForm {
+public class ConnectionVO extends ActionForm {
 
-	private String userName;
+	private String name;
 	private String password;
 
-	public ConnexionVO() {
+	public ConnectionVO() {
 		super();
 	}
 
-	public ConnexionVO(String userName, String password) {
-		super();
-		this.userName = userName;
-		this.password = password;
-	}
+
 
 	/**
-	 * @return the userName
+	 * @return the name
 	 */
-	public String getUserName() {
-		return userName;
+	public String getName() {
+		return name;
 	}
 
+
+
 	/**
-	 * @param userName
-	 *            the userName to set
+	 * @param name the name to set
 	 */
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setName(String name) {
+		this.name = name;
 	}
+
+
 
 	/**
 	 * @return the password
@@ -52,20 +51,23 @@ public class ConnexionVO extends ActionForm {
 		return password;
 	}
 
+
+
 	/**
-	 * @param password
-	 *            the password to set
+	 * @param password the password to set
 	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+
 
 	/**
 	 * Méthode testant les différents attributs de l'entité
 	 */
 	public ActionErrors validate(final ActionMapping mapping, final HttpServletRequest request) {
 		final ActionErrors errors = new ActionErrors();
-		if (StringUtils.isEmpty(this.getUserName())) {
+		if (StringUtils.isEmpty(this.getName())) {
 			errors.add("", new ActionMessage("errors.mandatory", "Nom d'utilisateur"));
 		}
 		if (StringUtils.isEmpty(this.getPassword())) {

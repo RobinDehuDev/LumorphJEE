@@ -16,6 +16,7 @@
 body{
 	
 	height: 900px;
+	background: rgba(0,0,0,0.7);
 }
 
 /* CSS TOP_PAGE */
@@ -25,11 +26,10 @@ body{
 			width:100%;
 		}
 		
-/* Connexion_container */
+/* Connection_container */
 
-		#connexion_container{
+		#connection_container{
 			width:15%;
-			background: rgba(0,0,0,0.7);
 			float:left;
 			height:100%;
 			font-size: 15px;
@@ -38,7 +38,17 @@ body{
 			color:white;
 		}
 		
-		#connexion_container p{
+		#inscription_container{
+			width:25%;
+			float:left;
+			height:100%;
+			font-family: 'Munro';
+			text-align: float;
+			color:white;
+			padding-left: 2%;
+		}
+		
+		#connection_container p,#inscription_container p{
 			font-size: 25px;
 			margin: 2%;
 			text-decoration: none;
@@ -46,16 +56,16 @@ body{
 			color:white;
 		}
 		
-		#connexion_container div{
+		#connection_container div,#inscription_container div{
 			margin: 2%;
 		}
 		
-		#connexion_container a{
+		#connection_container a,#inscription_container a{
 			text-decoration: none;
 			color:white;
 		}
 		
-		#connexion_container input{
+		#connection_container input,#inscription_container input{
 			color:black;
 		}
 		
@@ -64,12 +74,10 @@ body{
 	#header_container{
 		width:85%;
 		height:100%;
-		background:blue;
 		float:right;
 		text-align:center;
 		font-size: 50px;
 		font-family: 'Munro';
-		background: rgba(0,0,0,0.7);
 		color:white;
 	}
 	
@@ -88,7 +96,7 @@ body{
 		height:100%;
 		float:right;
 		background:green;
-		
+		font-family: 'Munro';
 	}
 
 
@@ -96,7 +104,6 @@ body{
 
 		#menu {
 			float:left;
-			background: rgba(0,0,0,0.7);
 			font-size: 25px;
 			font-family: 'Munro';
 			text-align: center;

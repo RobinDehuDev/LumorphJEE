@@ -7,23 +7,33 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
 	<!-- Définition des Formulaires -->
 	<form-beans type="org.apache.struts.action.ActionFormBean">
 		<form-bean name="editMap" type="com.ludomorph.beans.web.LevelSaveVO" />
-		<form-bean name="connexion" type="com.ludomorph.beans.web.ConnexionVO" />
+		<form-bean name="connection" type="com.ludomorph.beans.web.ConnectionVO" />
+		<form-bean name="registration" type="com.ludomorph.beans.web.UserVO" />
 	</form-beans>
 
 	<!-- Définition des Actions -->
 	<action-mappings type="org.apache.struts.action.ActionMapping">
-		<action path="/template" type="com.ludomorph.action.MenuAction">
-			<forward name="success" path="/jsp/template-page.jsp" />
-			<forward name="loadLevel" path="/loadLevel.do" />
+	
+
+ 
+		<action path="/connection" input="/jsp/shape/SHAPE_Index.jsp" name="connection" type="com.ludomorph.action.ConnectionAction">
+			<forward name="success" path="/jsp/shape/SHAPE_Index.jsp" />
 		</action>
 		
-		<action path="/connexion" input="/jsp/template-page.jsp" name="connexion" type="com.ludomorph.action.ConnexionAction">
-			<forward name="success" path="/jsp/template-page.jsp" />
+		<action path="/deconnection" type="com.ludomorph.action.DeconnectionAction">
+			<forward name="success" path="/jsp/shape/SHAPE_Index.jsp" />
 		</action>
 		
-		<action path="/editMap" type="com.ludomorph.action.SaveMapAction" name="editMap" input="/jsp/template-page.jsp">
-			<forward name="success" path="/jsp/template-page.jsp" />
+		<action path="/editMap" type="com.ludomorph.action.SaveMapAction" name="editMap" input="/jsp/shape/SHAPE_Level.jsp">
+			<forward name="success" path="/jsp/shape/SHAPE_Level.jsp" />
 		</action>
+		
+		<action path="/registration" type="com.ludomorph.action.RegistrationAction" name="registration" input="/jsp/shape/SHAPE_Registration.jsp">
+			<forward name="registrationDone" path="/jsp/shape/SHAPE_Index.jsp" />
+			<forward name="registrationFail" path="/jsp/shape/SHAPE_Registration.jsp" />
+		</action>
+		
+		
 	</action-mappings>
 
 	<!-- Application ressource -->
