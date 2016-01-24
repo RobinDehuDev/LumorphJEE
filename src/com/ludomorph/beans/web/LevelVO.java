@@ -8,62 +8,76 @@ import org.apache.struts.action.ActionForm;
 public class LevelVO extends ActionForm {
 
 	private static final long serialVersionUID = 1L;
-	private List<LevelLineVO> level;
+	private List<List<Character>> level;
 	private String name;
 	private int width;
+	private int id;
 
 	public LevelVO() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	
-	
+
 	/**
 	 * @param level
 	 * @param name
 	 * @param width
 	 */
-	public LevelVO(List<LevelLineVO> level, String name, int width) {
+	public LevelVO(List<List<Character>> level, String name, int width) {
 		super();
 		this.level = level;
 		this.name = name;
 		this.width = width;
 	}
-	
+
 	public LevelVO(String name) {
 		super();
 		this.name = name;
 	}
 
-
+	/**
+	 * generate first Map Test
+	 */
+	public void generateTest001() {
+		name = "DevTest001";
+		width = 5;
+		level = new ArrayList<List<Character>>();
+		List<Character> line = new ArrayList<Character>();
+		for (int i = 0; i < 5; i++) {
+			for (int j = 0; j < width; j++) {
+				line.add('A');
+			}
+			level.add(new ArrayList<Character>(line));
+			line.clear();
+		}
+	}
 
 	/**
-	 *  generate first Map Test
+	 * @return the id
 	 */
-	public void generateTest001(){
-		name = "DevTest001";
-		width = 10;
-		level = new ArrayList<LevelLineVO>();
-		List<Integer> line = new ArrayList<Integer>();
-		for(int j = 0 ; j < 10 ; j++){
-			line.add(0);
-		}
-		for(int i = 0 ; i < 5 ; i++){
-			level.add(new LevelLineVO(line));
-		}
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * @param id
+	 *            the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	/**
 	 * @return the level
 	 */
-	public List<LevelLineVO> getLevel() {
+	public List<List<Character>> getLevel() {
 		return level;
 	}
 
 	/**
-	 * @param level the level to set
+	 * @param level
+	 *            the level to set
 	 */
-	public void setLevel(List<LevelLineVO> level) {
+	public void setLevel(List<List<Character>> level) {
 		this.level = level;
 	}
 
@@ -75,7 +89,8 @@ public class LevelVO extends ActionForm {
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -89,23 +104,32 @@ public class LevelVO extends ActionForm {
 	}
 
 	/**
-	 * @param width the width to set
+	 * @param width
+	 *            the width to set
 	 */
 	public void setWidth(int width) {
 		this.width = width;
 	}
-	
-	public String toString(){
-		String r = "";
-		for(LevelLineVO l : level){
-			for(Integer i : l){
-				r+=i;
+
+	/**
+	 * @return the length
+	 */
+	public int getLength() {
+		int length = 0;
+		if (level.size() > 0 && width > 0)
+			length = level.size() / width;
+		return length;
+	}
+
+	public String toString() {
+		String r = ""+width;
+		for (List<Character> l : level) {
+			for (Character c : l) {
+				r += c;
 			}
-			r+="\n";
 		}
+
 		return r;
 	}
-	
-	
 
 }

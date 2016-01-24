@@ -1,7 +1,7 @@
 package com.ludomorph.beans.web;
 
 public class TypeVO {
-	private int id;
+	private char value;
 	private String name;
 
 	public TypeVO() {
@@ -14,9 +14,9 @@ public class TypeVO {
 	 * @param id
 	 * @param name
 	 */
-	public TypeVO(int id, String name) {
+	public TypeVO(char value, String name) {
 		super();
-		this.id = id;
+		this.value = value;
 		this.name = name;
 	}
 
@@ -25,15 +25,15 @@ public class TypeVO {
 	/**
 	 * @return the id
 	 */
-	public int getId() {
-		return id;
+	public int getValue() {
+		return value;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(int id) {
-		this.id = id;
+	public void setValue(char value) {
+		this.value = value;
 	}
 
 	/**

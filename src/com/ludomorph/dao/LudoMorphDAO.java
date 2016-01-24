@@ -77,8 +77,7 @@ public class LudoMorphDAO implements ILudoMorphDAO{
 		// Fin de la transaction
 		t.commit();
 		// Fermeture de la session Hibernate
-		s.close();
-		
+		s.close();	
 	}
 
 }

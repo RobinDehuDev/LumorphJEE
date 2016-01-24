@@ -45,10 +45,11 @@
 		</logic:notEqual>	
 		
 		<logic:equal name="page" value="6">
-			<li class="menu-item-selected"><a href="/Ludomorph/template.do?page=6" class="menu-link">Niveaux</a></li>
+			<li class="menu-item-selected"><a href="/Ludomorph/editMap.do" class="menu-link">Niveaux</a></li>
 		</logic:equal>
 		<logic:notEqual name="page" value="6">
-			<li class="menu-item"><a href="/Ludomorph/template.do?page=6" class="menu-link">Niveaux</a></li>
-		</logic:notEqual>	
+			<li class="menu-item"><a href="/Ludomorph/editMap.do" class="menu-link">Niveaux</a></li>
+		</logic:notEqual>
+			
 	</ul>
 

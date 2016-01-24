@@ -23,19 +23,7 @@ public class LoadMapAction extends Action{
 			final HttpServletResponse res) {
 		LevelVO map = new LevelVO();
 		
-		map.generateTest001();
 		
-		req.getSession().setAttribute(SessionConstantNames.EDITLEVELMAP, map);
-		
-		List<TypeVO> types = new ArrayList<TypeVO>();
-		types.add(new TypeVO(0,"vide"));
-		types.add(new TypeVO(1,"plateform"));
-		types.add(new TypeVO(2,"départ"));
-		types.add(new TypeVO(3,"arrivée"));
-		types.add(new TypeVO(4,"mechant"));
-		types.add(new TypeVO(5,"piege"));
-		
-		req.getSession().setAttribute(SessionConstantNames.EDITLEVELOBJECTDATA, types);
 		
 		
 

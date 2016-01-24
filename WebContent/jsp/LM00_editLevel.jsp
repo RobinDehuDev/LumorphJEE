@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ page import="com.ludomorph.action.SessionConstantNames"%>
+<%@ page import="com.ludomorph.action.Constants"%>
+<%@ page import="com.ludomorph.beans.web.LevelVO"%>
 <%@ taglib uri="/WEB-INF/tld/struts-bean-1.2.tld" prefix="bean"%>
 <%@ taglib uri="/WEB-INF/tld/struts-html-1.2.tld" prefix="html"%>
 <%@ taglib uri="/WEB-INF/tld/struts-logic-1.2.tld" prefix="logic"%>
@@ -12,99 +13,152 @@
 	href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 
 <script type="text/javascript">
-	var item = 0;
-	var map = new Array;
-	var line = new Array;
+	var item = 'A';
+	var object;
 	
-	window.onload = function() {
-
-		var tableMap = document.getElementById("mapTableID");
-		var tableObject = document.getElementById("objectTableID");
-		var object = document.getElementById("elementID");
-
-		if (tableMap != null) {
-			for (var i = 0; i < tableMap.rows.length; i++) {
-				for (var j = 0; j < tableMap.rows[i].cells.length; j++){
-					line[j] = tableMap.rows[i].cells[j].Text;
-					tableMap.rows[i].cells[j].onclick = function() {
-						this.children[0].value = item;
-						update(this.id);
-					};
+	var Level = function(){
+		var table= "";
+		var begin = -1;
+		var end = -1;
+		var width;
+		
+		this.init = function(map){
+			var length = 0;
+			var widthString = "";
+			
+			for(var i = 0 ; i < map.length ; i++){
+				if(map[i]<'A'){
+					length+=1;
+					widthString+=map[i];
 				}
-				map[i] = line;
-				line = [];
+				if(map[i] == 'B'){
+					begin = i;
+				}						
+				if(map[i] == 'C'){
+					end = i;
+				}
 			}
-		}
-	
-		if (tableObject != null) {
-			for (var i = 0; i < tableObject.rows.length; i++) {
-				tableObject.rows[i].onclick = function() {
-					object.innerHTML = this.id;
-					item = this.id;
-	
-				};
+			width = parseInt(widthString);
+			table = map.substring(length).toString();			
+		};
+		
+		var replaceAt = function(index, letter){
+			table = table.substring(0,index)+letter+table.substring(index+1);
+		};
+		
+		var reset = function(index){
+			var i = Math.floor(index/width);
+			var j = index % width;
+			document.getElementById(i+","+j).innerHTML = 'A';
+		};
+		
+		this.update = function(i,j){
+			var pos = i*width+j;
+			if(item == 'B'){
+				if(begin >= 0){ 
+					replaceAt(begin,'A');
+					reset(begin);
+				}
+				begin=pos;
 			}
+			if(end >= 0 && item == 'C'){
+				if(end >= 0){ 
+					replaceAt(end,'A');
+					reset(end);
+				}
+				end=pos;
+			}
+			replaceAt(pos,item);
+		};
+		
+		this.toString = function(){
+			s="Debut : "+begin;
+			s+="Fin : "+end;
+			s+="largeur : "+width;
+			s+="table : "+table;
+			alert(s);
+			return table;
+		};
+		
+		this.getTable = function(){
+			return table;
 		}
 	};
 	
-	function update(coord) {
-		var i = parseInt(coord.split(" ")[0]);
-		var j = parseInt(coord.split(" ")[1]);
+	var level = new Level();
 	
-		map[i][j] = item;
+	window.onload = function() {
+		object = document.getElementById("elementID");
+		var s = '<%=request.getSession().getAttribute("dataLevel").toString()%>';
+		level.init(s);
+	};
+	
+	function changeCell(i, j, element){
+		element.innerHTML = item;
+		level.update(i,j);
 	}
 
+	function selectObject(value){
+		item = String.fromCharCode(value);
+		object.innerHTML = item;
+	}
 	
 	function testFunction() {
-		alert(map);
+		alert("test");
+	}
+	
+	function save(){
+		document.getElementById("saveData").value = level.getTable();	
 	}
 </script>
 
 <title><bean:message key="message.editLevel.title" /></title>
 </head>
 <body>
-
 	<html:form action="editMap">
-	<h1>
-		<bean:message key="message.editLevel.title" />
-		:
-		<html:text property="name" value="${mapLevel.name}"/></h1>
+	<html:errors />
+		<h1>
+			<bean:message key="message.editLevel.title" />
+			:
+			<html:text property="name" value="${dataLevel.name}" />
+		</h1>
 
-	<div>
-		<bean:message key="message.editLevel.width" />
-		:
-		<html:text property="width" value="${mapLevel.width}"/>
-		<bean:message key="message.editLevel.selection" />
-		:
-		<var id="elementID">0</var>
-		<br>
-	</div>
+		<div>
+			<bean:message key="message.editLevel.width" />
+			:
+			<html:text property="width" value="${dataLevel.width}" />
+			<bean:message key="message.editLevel.selection" />
+			:
+			<var id="elementID">A</var>
+			<br>
+		</div>
 
-	<div>
-		<logic:notEmpty name="mapLevel">
+		<div>
+			<logic:notEmpty name="dataLevel">
 
-			<table class="pure-table" id="mapTableID">
-				
-				<logic:iterate name="mapLevel" property="level" id="myLine" indexId="lineID" type="com.ludomorph.beans.web.LevelLineVO">
-					<tr>
-						<logic:iterate id="line" name="myLine" property="line" indexId = "cellID">
-							<td id="${lineID} ${cellID}">
-							<html:text style="levelData" property="line" indexed="true" value="0" name="${lineID} ${cellID}"/>
-							</td>
-						</logic:iterate>
-					</tr>
-				</logic:iterate>
-			</table>
+				<table class="pure-table" id="mapTableID">
 
-		</logic:notEmpty>
-	</div>
+					<logic:iterate name="dataLevel" property="level" id="myLine"
+						indexId="lineID">
+						<tr>
+							<logic:iterate id="cell" name="myLine" indexId="cellID">
+								<td onclick="changeCell(${lineID},${cellID},this)" id="${lineID},${cellID}"><bean:write
+										name="cell" /></td>
+							</logic:iterate>
+						</tr>
+					</logic:iterate>
+				</table>
+
+			</logic:notEmpty>
+		</div>
 
 		<div>
 			<logic:notEmpty name="objectsData">
 
 				<table class="pure-table" id="objectTableID">
 					<logic:iterate name="objectsData" id="object" indexId="objectID">
-						<tr id="<bean:write name="object" property="id"/>">
+						<tr onclick="selectObject(${object.value})"
+							id="<bean:write name="object" property="value"/>">
 							<td><bean:write name="object" property="name" /></td>
 						</tr>
 					</logic:iterate>
@@ -112,18 +166,23 @@
 
 			</logic:notEmpty>
 		</div>
-		
+
 		<div>
 			<a class="pure-button" href="/Ludomorph/loadLevel.do"> <bean:message
 					key="message.editLevel.load" />
 			</a>
-			
-			<html:submit property="submit" styleClass="pure-button"><bean:message
-					key="message.editLevel.save" /></html:submit>
-			
-			<button onclick="testFunction()">test</button>
+
+			<html:submit property="submit" styleClass="pure-button" onclick="save()">
+				<bean:message key="message.editLevel.save" />
+			</html:submit>
+
 		</div>
-	
+		
+	<html:hidden property="id" value="${dataLevel.id}"/>
+	<html:hidden property="data" value="" styleId="saveData"/>
+	<html:hidden property="toSave" value="true"/>
+
 	</html:form>
+	<button onclick="testFunction()">test</button>
 </body>
 </html>

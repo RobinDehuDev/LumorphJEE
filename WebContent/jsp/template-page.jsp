@@ -32,6 +32,7 @@
 		<logic:equal name="page" value="6">
 			<jsp:include page="/jsp/LM00_editLevel.jsp" />
 		</logic:equal>
+		
 			
 
 		</div>
