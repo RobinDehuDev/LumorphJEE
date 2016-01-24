@@ -28,8 +28,6 @@ public class SaveMapAction extends Action{
 		
 		LevelSaveVO level = (LevelSaveVO) form;
 		
-		req.getSession().setAttribute("page", 6);
-		
 		LevelVO oldLevel = (LevelVO) req.getSession().getAttribute(Constants.EDIT_LEVEL_DATA);
 		if(oldLevel == null){
 			oldLevel = new LevelVO();

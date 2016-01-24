@@ -8,8 +8,8 @@ public interface ILudoMorphDAO {
 
 	<T> void delete(T obj);
 
-	<T> List<T> get();
-
 	<T> void update(T obj);
+	
+	<T> List get(String table, List<String>columns, List<String> args) ;
 
 }

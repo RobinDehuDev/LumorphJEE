@@ -4,7 +4,7 @@
 	<display-name>Ludomorph</display-name>
 	
 	<welcome-file-list>
-		<welcome-file>jsp/template-page.jsp</welcome-file>
+		<welcome-file>/jsp/shape/SHAPE_Index.jsp</welcome-file>
 	</welcome-file-list>
 	
 	<!-- STRUTS -->
