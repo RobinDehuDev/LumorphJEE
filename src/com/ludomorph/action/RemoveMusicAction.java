@@ -1,5 +1,7 @@
 package com.ludomorph.action;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,28 +19,22 @@ import com.ludomorph.business.IUserService;
 import com.ludomorph.business.MusicService;
 import com.ludomorph.business.UserService;
 
-public class RegistrationAction extends Action {
+public class RemoveMusicAction extends Action {
 
 	public ActionForward execute(final ActionMapping mapping, final ActionForm form, final HttpServletRequest req,
 			final HttpServletResponse res) {
 		
-		String messageResult;
-
-		UserVO registration = (UserVO) form;
+		IMusicService musicService = MusicService.getInstance();
 		
-		IUserService registrationService = UserService.getInstance();
+		int user_id = (int) req.getSession().getAttribute("user_id");
+		int index = Integer.parseInt(req.getParameter("index").toString()); 
 		
+		String music_name = ((List<String>) req.getSession().getAttribute("musics")).get(index);
+		System.out.println("Remove action done");
+		musicService.removeMusic(user_id, music_name, this.getServlet().getServletContext().getContextPath());
+		req.getSession().setAttribute("musics", musicService.getNamesMusics(user_id));
 		
-		if (registrationService.exist(registration.getName())==false) {
-			registrationService.register(registration);
-			messageResult = "registrationDone";
-		} else {
-			final ActionErrors errors = new ActionErrors();
-			errors.add("mon", new ActionMessage("errors.exist"));
-			saveErrors(req, errors);
-			messageResult = "registrationFail";
-		}
-		return mapping.findForward(messageResult);
+		return mapping.findForward("success");
 
 	}
 }

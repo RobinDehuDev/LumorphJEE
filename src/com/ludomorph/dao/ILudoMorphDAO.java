@@ -10,6 +10,6 @@ public interface ILudoMorphDAO {
 
 	<T> void update(T obj);
 	
-	<T> List get(String table, List<String>columns, List<String> args) ;
+	<T> List get(String table, List<String>columns, List<Object> args) ;
 
 }

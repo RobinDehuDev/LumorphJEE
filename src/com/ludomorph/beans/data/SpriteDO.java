@@ -32,7 +32,7 @@ public class SpriteDO implements Serializable {
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	private UserDO user;
-	
+
 	
 
 	public SpriteDO() {
@@ -54,8 +54,6 @@ public class SpriteDO implements Serializable {
 	}
 	
 	
-
-
 
 	/**
 	 * @param id

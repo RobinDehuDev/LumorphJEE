@@ -9,6 +9,7 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
 		<form-bean name="editMap" type="com.ludomorph.beans.web.LevelSaveVO" />
 		<form-bean name="connection" type="com.ludomorph.beans.web.ConnectionVO" />
 		<form-bean name="registration" type="com.ludomorph.beans.web.UserVO" />
+		<form-bean name="musicFile" type="com.ludomorph.beans.web.FileMusicVO" />
 	</form-beans>
 
 	<!-- Définition des Actions -->
@@ -31,6 +32,14 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
 		<action path="/registration" type="com.ludomorph.action.RegistrationAction" name="registration" input="/jsp/shape/SHAPE_Registration.jsp">
 			<forward name="registrationDone" path="/jsp/shape/SHAPE_Index.jsp" />
 			<forward name="registrationFail" path="/jsp/shape/SHAPE_Registration.jsp" />
+		</action>
+		
+		<action path="/RemoveMusic" type="com.ludomorph.action.RemoveMusicAction">
+			<forward name="success" path="/jsp/shape/SHAPE_Music.jsp" />
+		</action>
+		
+		<action path="/uploadMusicFile" type="com.ludomorph.action.AddMusicAction"  name="musicFile" input="/jsp/shape/SHAPE_Music.jsp">
+			<forward name="success" path="/jsp/shape/SHAPE_Music.jsp" />
 		</action>
 		
 		

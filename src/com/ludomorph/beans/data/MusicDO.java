@@ -30,7 +30,7 @@ public class MusicDO implements Serializable{
 	@Column(name = "path")
 	private String path;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.MERGE)
 	private UserDO user;
 	
 	

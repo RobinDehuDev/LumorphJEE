@@ -7,7 +7,7 @@
 
 
 <p class="menu-heading">MENU</p>
-<logic:notEmpty name="user">
+<logic:notEmpty name="user_id">
 	<ul class="menu-list">
 
 		<logic:equal name="page" value="1">
@@ -19,11 +19,11 @@
 		</logic:notEqual>
 
 		<logic:equal name="page" value="2">
-			<li class="menu-item-selected"><a href="" class="menu-link">Mes
+			<li class="menu-item-selected"><a href="<%=request.getContextPath()%>/jsp/shape/SHAPE_Music.jsp" class="menu-link">Mes
 					musiques</a></li>
 		</logic:equal>
 		<logic:notEqual name="page" value="2">
-			<li class="menu-item"><a href="" class="menu-link">Mes
+			<li class="menu-item"><a href="<%=request.getContextPath()%>/jsp/shape/SHAPE_Music.jsp" class="menu-link">Mes
 					musiques</a></li>
 		</logic:notEqual>
 

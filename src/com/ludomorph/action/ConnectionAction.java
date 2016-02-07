@@ -10,7 +10,9 @@ import org.apache.struts.action.ActionMapping;
 
 import com.ludomorph.beans.web.ConnectionVO;
 import com.ludomorph.beans.web.UserVO;
+import com.ludomorph.business.IMusicService;
 import com.ludomorph.business.IUserService;
+import com.ludomorph.business.MusicService;
 import com.ludomorph.business.UserService;
 
 
@@ -24,11 +26,17 @@ public class ConnectionAction  extends Action{
 		ConnectionVO connection = (ConnectionVO) form;
 		
 		IUserService userService = UserService.getInstance();
+		IMusicService musicService = MusicService.getInstance();
 		
 		UserVO userVO = userService.connection(connection);
 		
 		if(userVO!=null){
-			req.getSession().setAttribute("user", userVO);
+			req.getSession().setAttribute("user_id", userVO.getId());
+			req.getSession().setAttribute("user_name", userVO.getName());
+			if(!musicService.getNamesMusics(userVO.getId()).isEmpty())
+				req.getSession().setAttribute("musics", musicService.getNamesMusics(userVO.getId()));
+			else
+				req.getSession().setAttribute("musics",null);
 		}
 		
 		return mapping.findForward(Constants.FORWARD_SUCCESS);

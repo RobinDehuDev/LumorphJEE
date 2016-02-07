@@ -77,7 +77,7 @@ public class LudoMorphDAO implements ILudoMorphDAO{
 	}
 
 	@Override
-	public <T> List get(String table, List<String>columns, List<String> args) {
+	public <T> List get(String table, List<String>columns, List<Object> args) {
 		// TODO Auto-generated method stub
 		Session s = HibernateUtils.getSession();
 		// Début de la transaction
@@ -87,7 +87,7 @@ public class LudoMorphDAO implements ILudoMorphDAO{
 		String request = "from " + table + " where ";
 		for(int i=0; i<columns.size();i++)
 		{
-				request += columns.get(i) + "=:" + args.get(i);
+				request += columns.get(i) + "=:" + columns.get(i);
 				
 				if(i!=columns.size()-1)
 					request += " and ";
@@ -96,7 +96,7 @@ public class LudoMorphDAO implements ILudoMorphDAO{
 		
 		for(int i=0; i<args.size();i++)
 		{
-			q.setParameter(args.get(i), args.get(i));
+			q.setParameter(columns.get(i), args.get(i));
 		}
 		
 		// Récupération de la liste des résultats
