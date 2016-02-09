@@ -14,16 +14,15 @@ public class LevelSaveVO extends ActionForm {
 	private static final long serialVersionUID = 1L;
 	private String data;
 	private String name;
+	private int height;
 	private int width;
 	private int id;
-	private boolean toSave;
 
 	public LevelSaveVO() {
 		super();
 		data = "BC";
 		name ="name";
 		width = 1;
-		toSave = false;
 	}
 	
 	
@@ -79,6 +78,24 @@ public class LevelSaveVO extends ActionForm {
 
 
 	/**
+	 * @return the height
+	 */
+	public int getHeight() {
+		return height;
+	}
+
+
+
+	/**
+	 * @param height the height to set
+	 */
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
+
+
+	/**
 	 * @return the width
 	 */
 	public int getWidth() {
@@ -113,23 +130,6 @@ public class LevelSaveVO extends ActionForm {
 	}	
 	
 	
-	
-	
-	/**
-	 * @return the toSave
-	 */
-	public boolean isToSave() {
-		return toSave;
-	}
-
-
-
-	/**
-	 * @param toSave the toSave to set
-	 */
-	public void setToSave(boolean toSave) {
-		this.toSave = toSave;
-	}
 
 
 

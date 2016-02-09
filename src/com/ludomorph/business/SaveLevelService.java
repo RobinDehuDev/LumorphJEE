@@ -13,6 +13,9 @@ import com.ludomorph.dao.LudoMorphDAO;
 public class SaveLevelService implements ISaveLevelService {
 
 	private static SaveLevelService instance = null;
+	
+	private static String tableUser = "UserDO";
+	private static String tableLevel = "LevelDO";
 
 	private SaveLevelService() {
 		// TODO Auto-generated constructor stub
@@ -35,23 +38,40 @@ public class SaveLevelService implements ISaveLevelService {
 	public void save(LevelSaveVO level, String user, LevelVO oldLevel) {
 		
 		boolean same = refresh(level, oldLevel);
-		
-		LevelDO leveldo = toDO(level, user);
 		ILudoMorphDAO dao = LudoMorphDAO.getInstance();
+		LevelDO leveldo;
+		leveldo = toDO(level, user, same);
+		if(same){
+			dao.<LevelDO> update(leveldo);
+		}else{
+			dao.<LevelDO> save(leveldo);
+		}
 		
-		dao.<LevelDO> save(leveldo);
 
 	}
 
-	private LevelDO toDO(LevelSaveVO level, String user) {
+	private LevelDO toDO(LevelSaveVO level, String user, boolean same) {
 		String simple = level.getWidth()+"@"+simplify(level.getData());
-		UserDO userdo = new UserDO();
+		
+		ILudoMorphDAO dao = LudoMorphDAO.getInstance();
+		
+		List<String> columns = new ArrayList<String>();
+		columns.add("name");
+		List<Object> args = new ArrayList<Object>();
+		args.add(user);
+		UserDO userdo = (UserDO) (dao.<UserDO>get(tableUser, columns, args)).get(0);
+		
 		LevelDO leveldo = new LevelDO(level.getName(), simple, userdo);
+		
+		if(same){
+			leveldo.setId(level.getId());
+		}
 
 		return leveldo;
 
 	}
-
+	
+	
 	private String simplify(String complex) {
 		String simple = "";
 		int cpt = 1;
@@ -71,6 +91,9 @@ public class SaveLevelService implements ISaveLevelService {
 	
 	private boolean refresh(LevelSaveVO level, LevelVO oldLevel){
 		boolean same = level.getName().equals(oldLevel.getName());
+		
+		if(!same)
+			oldLevel.setName(level.getName()); 
 		
 		List<List<Character>> map = new ArrayList<List<Character>>();
 		int height = level.getData().length()/level.getWidth();

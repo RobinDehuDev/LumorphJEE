@@ -30,15 +30,23 @@
 				if(map[i]<'A'){
 					length+=1;
 					widthString+=map[i];
-				}
-				if(map[i] == 'B'){
-					begin = i;
-				}						
-				if(map[i] == 'C'){
-					end = i;
+				}else{
+					if(map[i] == 'B'){
+						begin = i;
+					}						
+					if(map[i] == 'C'){
+						end = i;
+					}
+					
+					width = parseInt(widthString);
+					column = Math.floor((i-length)/width);
+					line = (i-length)%width;
+					
+					document.getElementById(column+","+line).className = "editCell"+map[i];;
+						
 				}
 			}
-			width = parseInt(widthString);
+			
 			table = map.substring(length).toString();			
 		};
 		
@@ -82,7 +90,7 @@
 		
 		this.getTable = function(){
 			return table;
-		}
+		};
 	};
 	
 	var level = new Level();
@@ -95,6 +103,7 @@
 	
 	function changeCell(i, j, element){
 		element.innerHTML = item;
+		element.className = "editCell"+item;
 		level.update(i,j);
 	}
 
@@ -115,34 +124,54 @@
 <title><bean:message key="message.editLevel.title" /></title>
 </head>
 <body>
-	<html:form action="editMap">
-	<html:errors />
-		<h1>
+	<div class="content">
+	<h1>
 			<bean:message key="message.editLevel.title" />
+	</h1>
+	
+	
+	<html:form action="editSize">
+		<h2>
+				<bean:message key="message.editLevel.dimensions" /> : 
+		</h2>
+			<bean:message key="message.editLevel.height" />
 			:
-			<html:text property="name" value="${dataLevel.name}" />
-		</h1>
-
-		<div>
+			<html:text property="height" value="${dataLevel.height}" />
 			<bean:message key="message.editLevel.width" />
 			:
 			<html:text property="width" value="${dataLevel.width}" />
+			
+			<html:submit property="submit" styleClass="myBtton">
+				<bean:message key="message.editLevel.update" />
+			</html:submit>
+	</html:form>
+	
+	
+	<html:form action="editMap">
+	<html:errors />
+		<h2>
+			<bean:message key="message.editLevel.levelName" />
+			:
+			<html:text property="name" value="${dataLevel.name}" />
+		</h2>
+
+		<div>
 			<bean:message key="message.editLevel.selection" />
 			:
 			<var id="elementID">A</var>
 			<br>
 		</div>
 
-		<div>
+		<div id="level">
 			<logic:notEmpty name="dataLevel">
 
-				<table class="pure-table" id="mapTableID">
+				<table id="mapTableID">
 
 					<logic:iterate name="dataLevel" property="level" id="myLine"
 						indexId="lineID">
 						<tr>
 							<logic:iterate id="cell" name="myLine" indexId="cellID">
-								<td onclick="changeCell(${lineID},${cellID},this)" id="${lineID},${cellID}"><bean:write
+								<td onclick="changeCell(${lineID},${cellID},this)" id="${lineID},${cellID}" class="editCellA"><bean:write
 										name="cell" /></td>
 							</logic:iterate>
 						</tr>
@@ -152,13 +181,14 @@
 			</logic:notEmpty>
 		</div>
 
-		<div>
+		<div id="toolBar">
 			<logic:notEmpty name="objectsData">
 
-				<table class="pure-table" id="objectTableID">
+				<table id="objectTableID">
 					<logic:iterate name="objectsData" id="object" indexId="objectID">
 						<tr onclick="selectObject(${object.value})"
 							id="<bean:write name="object" property="value"/>">
+							<td class="${object.cssClass}">ok</td>
 							<td><bean:write name="object" property="name" /></td>
 						</tr>
 					</logic:iterate>
@@ -168,21 +198,31 @@
 		</div>
 
 		<div>
-			<a class="pure-button" href="/Ludomorph/loadLevel.do"> <bean:message
-					key="message.editLevel.load" />
-			</a>
+			
 
-			<html:submit property="submit" styleClass="pure-button" onclick="save()">
+			<html:submit property="submit" styleClass="myButton" onclick="save()">
 				<bean:message key="message.editLevel.save" />
 			</html:submit>
 
 		</div>
 		
 	<html:hidden property="id" value="${dataLevel.id}"/>
+	<html:hidden property="height" value="${dataLevel.height}"/>
+	<html:hidden property="width" value="${dataLevel.width}"/>
 	<html:hidden property="data" value="" styleId="saveData"/>
-	<html:hidden property="toSave" value="true"/>
 
 	</html:form>
-	<button onclick="testFunction()">test</button>
+	<html:form action="loadMap">
+	
+	<html:select property="id">
+	<html:optionsCollection name="listLevel"
+		label="name" value="id" /></html:select>
+	
+	
+	<html:submit property="submit" styleClass="myButton">
+				<bean:message key="message.editLevel.load" />
+	</html:submit>	
+	</html:form>
+	</div>
 </body>
 </html>

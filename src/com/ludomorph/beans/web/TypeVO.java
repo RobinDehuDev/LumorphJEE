@@ -3,6 +3,7 @@ package com.ludomorph.beans.web;
 public class TypeVO {
 	private char value;
 	private String name;
+	private String cssClass;
 
 	public TypeVO() {
 		// TODO Auto-generated constructor stub
@@ -14,10 +15,11 @@ public class TypeVO {
 	 * @param id
 	 * @param name
 	 */
-	public TypeVO(char value, String name) {
+	public TypeVO(char value, String name, String cssClass) {
 		super();
 		this.value = value;
 		this.name = name;
+		this.cssClass = cssClass;
 	}
 
 
@@ -48,6 +50,24 @@ public class TypeVO {
 	 */
 	public void setName(String name) {
 		this.name = name;
+	}
+
+
+
+	/**
+	 * @return the cssClass
+	 */
+	public String getCssClass() {
+		return cssClass;
+	}
+
+
+
+	/**
+	 * @param cssClass the cssClass to set
+	 */
+	public void setCssClass(String cssClass) {
+		this.cssClass = cssClass;
 	}
 	
 	

@@ -20,7 +20,9 @@ public class DeconnectionAction  extends Action{
 	public ActionForward execute(final ActionMapping mapping, final ActionForm form, final HttpServletRequest req,
 			final HttpServletResponse res) {
 	
-		req.getSession().setAttribute("user", null);
+		req.getSession().setAttribute("user_name", null);
+		req.getSession().setAttribute("user_id", null);
+		req.getSession().setAttribute("musics", null);
 		
 		return mapping.findForward(Constants.FORWARD_SUCCESS);
 	}

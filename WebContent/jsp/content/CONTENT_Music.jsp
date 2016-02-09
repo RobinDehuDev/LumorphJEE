@@ -1,12 +1,47 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<%@ taglib uri="/WEB-INF/tld/struts-bean-1.2.tld" prefix="bean"%>
+<%@ taglib uri="/WEB-INF/tld/struts-html-1.2.tld" prefix="html"%>
+<%@ taglib uri="/WEB-INF/tld/struts-logic-1.2.tld" prefix="logic"%>
 
-</body>
-</html>
+<div id="music_container" class="content">
+	<TABLE BORDER="1" class="pure-table">
+		<thead>
+			<TR>
+				<TH>Titre</TH>
+				<TH>Ecouter</TH>
+				<TH>Option</TH>
+			</TR>
+		</thead>
+
+		<logic:notEmpty name="musics">
+			<logic:iterate name="musics" id="currentMusic" indexId="index">
+				<tbody>
+					<TR>
+						<TD><bean:write name="currentMusic"></bean:write></TD>
+						<TD><audio controls>
+								<source
+									src="/Ludomorph/ressources/musics/${user_id}/<bean:write name="currentMusic"></bean:write>"
+									type="audio/mpeg">
+							</audio></TD>
+						<TD>
+						<logic:notEqual name="currentMusic" value="Default_music.mp3">
+						<a class="pure-button pure-button-primary"
+							style="background: rgb(202, 60, 60)"
+							href="/Ludomorph/RemoveMusic.do?index=${index}">X</a>
+						</logic:notEqual>
+						</TD>
+					</TR>
+				</tbody>
+			</logic:iterate>
+		</logic:notEmpty>
+	</TABLE>
+	<br><br>
+	<html:form action="/uploadMusicFile" enctype="multipart/form-data">
+          Sélectionner la musique : <html:file property="myFileMusic"/><br>
+         <html:submit value="Envoyer Musique"/>
+
+   </html:form>
+   <br>
+   <br>
+   <html:errors/>
+
+</div>
