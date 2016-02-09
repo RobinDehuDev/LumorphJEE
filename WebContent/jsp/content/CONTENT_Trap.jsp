@@ -3,7 +3,7 @@
 <%@ taglib uri="/WEB-INF/tld/struts-logic-1.2.tld" prefix="logic"%>
 
 
-<div id="trap_container">
+<div id="trap_container" class="content">
 	<h2>Current trap:</h2><br>
 	<html:image src="/Ludomorph/ressources/sprite/${user_id}/trap/trap.png" alt="Fail Loading"/>
 	<br>

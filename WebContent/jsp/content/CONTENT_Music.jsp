@@ -2,7 +2,7 @@
 <%@ taglib uri="/WEB-INF/tld/struts-html-1.2.tld" prefix="html"%>
 <%@ taglib uri="/WEB-INF/tld/struts-logic-1.2.tld" prefix="logic"%>
 
-<div id="music_container">
+<div id="music_container" class="content">
 	<TABLE BORDER="1" class="pure-table">
 		<thead>
 			<TR>

@@ -3,7 +3,7 @@
 <%@ taglib uri="/WEB-INF/tld/struts-logic-1.2.tld" prefix="logic"%>
 
 
-<div id="background_container">
+<div id="background_container" class="content">
 	<h2>Current Background:</h2><br>
 	<html:image src="/Ludomorph/ressources/sprite/${user_id}/background/background.png" alt="Fail Loading"/>
 	<br>

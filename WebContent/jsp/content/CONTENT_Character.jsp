@@ -3,7 +3,7 @@
 <%@ taglib uri="/WEB-INF/tld/struts-logic-1.2.tld" prefix="logic"%>
 
 
-<div id="character_container">
+<div id="character_container" class="content">
 	<h2>Current character:</h2>
 	<br>
 

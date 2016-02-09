@@ -3,7 +3,7 @@
 <%@ taglib uri="/WEB-INF/tld/struts-logic-1.2.tld" prefix="logic"%>
 
 
-<div id="ennemy_container">
+<div id="ennemy_container" class="content">
 	<h2>Current ennemy:</h2><br>
 	<html:image src="/Ludomorph/ressources/sprite/${user_id}/ennemy/ennemy.png" alt="Fail Loading"/>
 	<br>

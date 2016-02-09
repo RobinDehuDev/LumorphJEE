@@ -124,7 +124,7 @@
 <title><bean:message key="message.editLevel.title" /></title>
 </head>
 <body>
-	<div id="editContent">
+	<div class="content">
 	<h1>
 			<bean:message key="message.editLevel.title" />
 	</h1>
