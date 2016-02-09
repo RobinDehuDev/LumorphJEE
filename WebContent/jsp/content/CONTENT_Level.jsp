@@ -110,6 +110,7 @@
 	function selectObject(value){
 		item = String.fromCharCode(value);
 		object.innerHTML = item;
+		object.className = "editCell"+item;
 	}
 	
 	function testFunction() {
@@ -155,10 +156,10 @@
 			<html:text property="name" value="${dataLevel.name}" />
 		</h2>
 
-		<div>
+		<div id="elementSelect">
 			<bean:message key="message.editLevel.selection" />
 			:
-			<var id="elementID">A</var>
+			<span id="elementID" class="editCellA">A</span>
 			<br>
 		</div>
 
@@ -199,6 +200,7 @@
 	
 				</logic:notEmpty>
 			</div>
+		</div>
 		<div id="confirm">
 			<div>
 				
@@ -215,12 +217,12 @@
 			<html:hidden property="width" value="${dataLevel.width}"/>
 			<html:hidden property="data" value="" styleId="saveData"/>
 		</div>
-	</div>
+
 		</html:form>
 	<div>
 		<html:form action="loadMap">
 		
-		<html:select property="id">
+		<html:select property="id" styleClass="myButton">
 		<html:optionsCollection name="listLevel"
 			label="name" value="id" /></html:select>
 		

@@ -1,230 +1,229 @@
 @CHARSET "ISO-8859-1";
 
-
 /* Chargement des differentes polices */
+@font-face {
+	font-family: 'Caviar_Bold';
+	src: url('../font_family/Caviar/Caviar_Dreams_Bold.ttf');
+}
 
-		@font-face { 
-		  font-family: 'Caviar_Bold'; 
-		  src: url('../font_family/Caviar/Caviar_Dreams_Bold.ttf'); 
-		}
-		
-		@font-face { 
-		  font-family: 'Munro'; 
-		  src: url('../font_family/Munro/Munro.ttf'); 
-		}
+@font-face {
+	font-family: 'Munro';
+	src: url('../font_family/Munro/Munro.ttf');
+}
 
-body{
-	
+body {
 	height: 900px;
-	background: rgba(0,0,0,0.7);
+	background: rgba(0, 0, 0, 0.7);
 }
 
 /* CSS TOP_PAGE */
+#top_page {
+	height: 25%;
+	width: 100%;
+}
 
-		#top_page{
-			height:25%;
-			width:100%;
-		}
-		
 /* Connection_container */
+#connection_container {
+	width: 15%;
+	float: left;
+	height: 100%;
+	font-size: 15px;
+	font-family: 'Munro';
+	text-align: center;
+	color: white;
+}
 
-		#connection_container{
-			width:15%;
-			float:left;
-			height:100%;
-			font-size: 15px;
-			font-family: 'Munro';
-			text-align: center;
-			color:white;
-		}
-		
-		
-		
-		#connection_container p{
-			font-size: 25px;
-			margin: 2%;
-			text-decoration: none;
-			list-style:none;
-			color:white;
-		}
-		
-		#connection_container div{
-			margin: 2%;
-		}
-		
-		#connection_container a{
-			text-decoration: none;
-			color:white;
-		}
-		
-		#connection_container input{
-			color:black;
-		}
-		
+#connection_container p {
+	font-size: 25px;
+	margin: 2%;
+	text-decoration: none;
+	list-style: none;
+	color: white;
+}
+
+#connection_container div {
+	margin: 2%;
+}
+
+#connection_container a {
+	text-decoration: none;
+	color: white;
+}
+
+#connection_container input {
+	color: black;
+}
+
 /*  header container */
-	
-	#header_container{
-		width:85%;
-		height:100%;
-		float:right;
-		text-align:center;
-		font-size: 50px;
-		font-family: 'Munro';
-		color:white;
-	}
-	
-	
+#header_container {
+	width: 85%;
+	height: 100%;
+	float: right;
+	text-align: center;
+	font-size: 50px;
+	font-family: 'Munro';
+	color: white;
+}
+
 /* bottom page */
+#bottom_page {
+	height: 75%;
+}
 
-	#bottom_page{
-		height:75%;
-	}
-	
-	
 /* content container */
+#content_container {
+	width: 85%;
+	height: 100%;
+	float: right;
+	background: white;
+	font-family: 'Munro';
+	margin: 10;
+}
 
-	#content_container{
-		width:85%;
-		height:100%;
-		float:right;
-		background:white;
-		font-family: 'Munro';
-		margin:10;
-	}
-	
-	.content{
-		margin: 2%;
-		overflow:hidden;
-	}
-
+.content {
+	margin: 2%;
+	overflow: hidden;
+}
 
 /* CSS menu */
+#menu {
+	float: left;
+	font-size: 25px;
+	font-family: 'Munro';
+	text-align: center;
+	width: 15%;
+	height: 100%;
+}
 
-		#menu {
-			float:left;
-			font-size: 25px;
-			font-family: 'Munro';
-			text-align: center;
-			width:15%;
-			height:100%;
+#menu a:hover {
+	text-decoration: none;
+}
 
-		}
-		
-		#menu a:hover {
-		    text-decoration: none;
-		    
-		}
-		
-		#menu ul {
-   			padding-left: 0;
-		}
-		
-		#menu .menu-heading{
-			color: white;
-		}
-		
-		#menu .menu-item{
-			margin: 5%;
-			text-decoration: none;
-			list-style:none;
-			
-		}
-		
-		#menu .menu-item-selected{
-			margin: 5%;
-			text-decoration: none;
-			list-style:none;
-			background-color:white;
-			
-		}
-		
-		#menu .menu-item-selected a{
-			color:black;
-		}
-		
-		#menu li:hover{
-			background-color:rgb(120,120,120);
-		}
-		
-		#menu li:hover a{
-			color:black;
-		}
-		
-		
-		#menu .menu-link{
-			color:rgb(220,220,220);
-			text-decoration: none;
-		}
-		
+#menu ul {
+	padding-left: 0;
+}
+
+#menu .menu-heading {
+	color: white;
+}
+
+#menu .menu-item {
+	margin: 5%;
+	text-decoration: none;
+	list-style: none;
+}
+
+#menu .menu-item-selected {
+	margin: 5%;
+	text-decoration: none;
+	list-style: none;
+	background-color: white;
+}
+
+#menu .menu-item-selected a {
+	color: black;
+}
+
+#menu li:hover {
+	background-color: rgb(120, 120, 120);
+}
+
+#menu li:hover a {
+	color: black;
+}
+
+#menu .menu-link {
+	color: rgb(220, 220, 220);
+	text-decoration: none;
+}
+
 /* Edit Page */
+#levelContent {
+	width: 99%;
+	height: 40%;
+}
 
-		#levelContent{
-			width:80%;
-			height:40%;
-		}
-		#level{
-			float: left;
-			width:75%;
-			height:50%%;
-			overflow: auto;
-			cursor:pointer;
-			padding:15px;
-		}
-		
-		#toolBar{
-			float:right;
-			width:19%;
-			cursor:pointer;
-		}
-		
-		#confirm{
-			top:2%;
-		}
-		
-		
-		
-		
-		
-		.editCellA{
-			width:24px;
-			height:24px;
-			background-color:white;
-			border: 1px solid black;
-			color: transparent;
-		}
-		
-		.editCellB{
-			width:24px;
-			height:24px;
-			background-color:blue;
-			border: 1px solid black;
-			color: transparent;
-		}
-		.editCellC{
-			width:24px;
-			height:24px;
-			background-color:green;
-			border: 1px solid black;
-			color: transparent;
-		}
-		.editCellD{
-			width:24px;
-			height:24px;
-			background-color:black;
-			border: 1px solid black;
-			color: transparent;
-		}
-		.editCellE{
-			width:24px;
-			height:24px;
-			background-color:red;
-			border: 1px solid black;
-			color: transparent;
-		}
-		.editCellF{
-			width:24px;
-			height:24px;
-			background-color:orange;
-			border: 1px solid black;
-			color: transparent;
-		}
+#level {
+	display: inline-block;
+	width: 75%;
+	height:200px;
+	overflow: auto;
+	cursor: pointer;
+	padding-bottom: 5%;
+}
+
+#toolBar {
+	display: inline-block;
+	width: 19%;
+	cursor: pointer;
+	text-align: center;
+	text-indent: 15px;
+	font-size: 150%;
+	vertical-align: top;
+}
+
+#toolBar tr {
+	margin: 5px;
+	border-bottom: 1px solid black;
+}
+
+#confirm {
+	padding-top: 1%;
+	padding-bottom: 1%;
+}
+
+#elementSelect {
+	width: 200px;
+}
+
+.myButton {
+	font-size: 160%;
+}
+
+.editCellA {
+	width: 24px;
+	height: 24px;
+	background-color: white;
+	border: 1px solid black;
+	color: transparent;
+}
+
+.editCellB {
+	width: 24px;
+	height: 24px;
+	background-color: blue;
+	border: 1px solid black;
+	color: transparent;
+}
+
+.editCellC {
+	width: 24px;
+	height: 24px;
+	background-color: green;
+	border: 1px solid black;
+	color: transparent;
+}
+
+.editCellD {
+	width: 24px;
+	height: 24px;
+	background-color: black;
+	border: 1px solid black;
+	color: transparent;
+}
+
+.editCellE {
+	width: 24px;
+	height: 24px;
+	background-color: red;
+	border: 1px solid black;
+	color: transparent;
+}
+
+.editCellF {
+	width: 24px;
+	height: 24px;
+	background-color: orange;
+	border: 1px solid black;
+	color: transparent;
+}
