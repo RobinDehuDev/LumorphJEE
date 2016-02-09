@@ -1,6 +1,5 @@
 package com.ludomorph.action;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,8 +12,9 @@ import org.apache.struts.action.ActionMapping;
 
 import com.ludomorph.beans.web.LevelSaveVO;
 import com.ludomorph.beans.web.LevelVO;
-import com.ludomorph.beans.web.TypeVO;
+import com.ludomorph.business.ILoadLevelService;
 import com.ludomorph.business.ISaveLevelService;
+import com.ludomorph.business.LoadLevelService;
 import com.ludomorph.business.SaveLevelService;
 
 public class SaveMapAction extends Action{
@@ -29,28 +29,21 @@ public class SaveMapAction extends Action{
 		LevelSaveVO level = (LevelSaveVO) form;
 		
 		LevelVO oldLevel = (LevelVO) req.getSession().getAttribute(Constants.EDIT_LEVEL_DATA);
-		if(oldLevel == null){
-			oldLevel = new LevelVO();
-			oldLevel.generateTest001();
-			
-			req.getSession().setAttribute(Constants.EDIT_LEVEL_DATA, oldLevel);
-		}
 		
-		List<TypeVO> types = new ArrayList<TypeVO>();
-		types.add(new TypeVO('A',"vide"));
-		types.add(new TypeVO('B',"départ"));
-		types.add(new TypeVO('C',"arrivée"));
-		types.add(new TypeVO('D',"plateform"));
-		types.add(new TypeVO('E',"mechant"));
-		types.add(new TypeVO('F',"piege"));
 		
-		req.getSession().setAttribute(Constants.EDIT_LEVEL_OBJECT, types);
 		
-		if(level.isToSave()){
-			ISaveLevelService service = SaveLevelService.getInstance();
-			service.save(level, "robin", oldLevel);
-			req.getSession().setAttribute(Constants.EDIT_LEVEL_DATA, oldLevel);
-		}
+		ISaveLevelService service = SaveLevelService.getInstance();
+		String user = (String) req.getSession().getAttribute("user_name");
+		int userID = (int) req.getSession().getAttribute("user_id");
+		service.save(level, user, oldLevel);
+		req.getSession().setAttribute(Constants.EDIT_LEVEL_DATA, oldLevel);
+		
+		ILoadLevelService levelService = LoadLevelService.getInstance();
+
+		List<LevelVO> userList = levelService.getLevels(userID);
+
+		req.getSession().setAttribute(Constants.EDIT_LEVEL_LIST, userList);
+		
 		
 		
 		

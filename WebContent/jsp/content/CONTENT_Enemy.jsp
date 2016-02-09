@@ -15,4 +15,8 @@
          <html:submit value="Uploader"/>
 
    </html:form>
+      
+   <br>
+   <br>
+   <html:errors/>
 </div>

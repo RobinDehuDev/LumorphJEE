@@ -77,7 +77,7 @@ public class LudoMorphDAO implements ILudoMorphDAO{
 	}
 
 	@Override
-	public <T> List get(String table, List<String>columns, List<Object> args) {
+	public <T> List<T> get(String table, List<String>columns, List<Object> args) {
 		// TODO Auto-generated method stub
 		Session s = HibernateUtils.getSession();
 		// Début de la transaction
@@ -100,9 +100,25 @@ public class LudoMorphDAO implements ILudoMorphDAO{
 		}
 		
 		// Récupération de la liste des résultats
-		List list = q.list();
+		@SuppressWarnings("unchecked")
+		List<T> list = q.list();
+		
+		// Fin de la transaction
+		tx.commit();
+		// Fermeture de la session Hibernate
+		s.close();	
 
 		return list;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public <T> List<T> get(String table) {
+		final Session s = HibernateUtils.getSession();
+		// Création de la requête
+		final Query q = s.createQuery("from "+table);
+		// Récupération de la liste des résultats
+		return (List<T>) q.list();
 	}
 
 }

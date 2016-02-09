@@ -16,7 +16,7 @@
 
    </html:form>
    
-    <br>
+   <br>
    <br>
    <html:errors/>
 </div>

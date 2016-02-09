@@ -11,6 +11,7 @@ public class LevelVO extends ActionForm {
 	private List<List<Character>> level;
 	private String name;
 	private int width;
+	private int height;
 	private int id;
 
 	public LevelVO() {
@@ -28,6 +29,23 @@ public class LevelVO extends ActionForm {
 		this.name = name;
 		this.width = width;
 	}
+	
+	
+
+	/**
+	 * @param level
+	 * @param name
+	 * @param width
+	 * @param id
+	 */
+	public LevelVO(List<List<Character>> level, String name, int width, int height, int id) {
+		super();
+		this.level = level;
+		this.name = name;
+		this.width = width;
+		this.height=height;
+		this.id = id;
+	}
 
 	public LevelVO(String name) {
 		super();
@@ -38,8 +56,9 @@ public class LevelVO extends ActionForm {
 	 * generate first Map Test
 	 */
 	public void generateTest001() {
-		name = "DevTest001";
+		name = "";
 		width = 5;
+		height = 5;
 		level = new ArrayList<List<Character>>();
 		List<Character> line = new ArrayList<Character>();
 		for (int i = 0; i < 5; i++) {
@@ -49,6 +68,24 @@ public class LevelVO extends ActionForm {
 			level.add(new ArrayList<Character>(line));
 			line.clear();
 		}
+		
+		id = -1;
+	}
+	
+	
+
+	/**
+	 * @return the height
+	 */
+	public int getHeight() {
+		return height;
+	}
+
+	/**
+	 * @param height the height to set
+	 */
+	public void setHeight(int height) {
+		this.height = height;
 	}
 
 	/**

@@ -49,11 +49,11 @@
 		</logic:notEqual>
 
 		<logic:equal name="page" value="6">
-			<li class="menu-item-selected"><a href="/Ludomorph/editMap.do"
+			<li class="menu-item-selected"><a href="<%=request.getContextPath()%>/jsp/shape/SHAPE_Level.jsp"
 				class="menu-link">Niveaux</a></li>
 		</logic:equal>
 		<logic:notEqual name="page" value="6">
-			<li class="menu-item"><a href="/Ludomorph/editMap.do"
+			<li class="menu-item"><a href="<%=request.getContextPath()%>/jsp/shape/SHAPE_Level.jsp"
 				class="menu-link">Niveaux</a></li>
 		</logic:notEqual>
 

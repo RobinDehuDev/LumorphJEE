@@ -1,7 +1,5 @@
 package com.ludomorph.action;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,25 +8,25 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
+import com.ludomorph.beans.web.EditSizeVO;
 import com.ludomorph.beans.web.LevelVO;
-import com.ludomorph.business.ILoadLevelService;
-import com.ludomorph.business.LoadLevelService;
+import com.ludomorph.business.EditSizeService;
+import com.ludomorph.business.IEditSizeService;
 
-public class LoadMapAction extends Action {
+public class EditSizeAction extends Action {
 
-	@SuppressWarnings("unchecked")
 	public ActionForward execute(final ActionMapping mapping, final ActionForm form, final HttpServletRequest req,
 			final HttpServletResponse res) {
 
-		LevelVO level = (LevelVO) form;
+		EditSizeVO size = (EditSizeVO) form;
 
-		ILoadLevelService loadService = LoadLevelService.getInstance();
+		LevelVO level = (LevelVO) req.getSession().getAttribute(Constants.EDIT_LEVEL_DATA);
 
-		loadService.update(level, (List<LevelVO>) req.getSession().getAttribute(Constants.EDIT_LEVEL_LIST));
+		IEditSizeService editService = EditSizeService.getInstance();
+
+		editService.update(size, level);
 
 		req.getSession().setAttribute(Constants.EDIT_LEVEL_DATA, level);
-		
-		System.out.println("loded height : "+ level.getHeight());
 
 		return mapping.findForward("success");
 	}

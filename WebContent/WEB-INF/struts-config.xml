@@ -7,6 +7,8 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
 	<!-- Définition des Formulaires -->
 	<form-beans type="org.apache.struts.action.ActionFormBean">
 		<form-bean name="editMap" type="com.ludomorph.beans.web.LevelSaveVO" />
+		<form-bean name="editSize" type="com.ludomorph.beans.web.EditSizeVO" />	
+		<form-bean name="loadMap" type="com.ludomorph.beans.web.LevelVO" />
 		<form-bean name="connection" type="com.ludomorph.beans.web.ConnectionVO" />
 		<form-bean name="registration" type="com.ludomorph.beans.web.UserVO" />
 		<form-bean name="musicFile" type="com.ludomorph.beans.web.FileMusicVO" />
@@ -30,6 +32,14 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
 		</action>
 		
 		<action path="/editMap" type="com.ludomorph.action.SaveMapAction" name="editMap" input="/jsp/shape/SHAPE_Level.jsp">
+			<forward name="success" path="/jsp/shape/SHAPE_Level.jsp" />
+		</action>
+		
+		<action path="/editSize" type="com.ludomorph.action.EditSizeAction" name="editSize" input="/jsp/shape/SHAPE_Level.jsp">
+			<forward name="success" path="/jsp/shape/SHAPE_Level.jsp" />
+		</action>
+		
+		<action path="/loadMap" type="com.ludomorph.action.LoadMapAction" name="loadMap" input="/jsp/shape/SHAPE_Level.jsp">
 			<forward name="success" path="/jsp/shape/SHAPE_Level.jsp" />
 		</action>
 		
