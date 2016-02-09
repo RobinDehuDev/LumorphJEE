@@ -13,4 +13,6 @@ public interface IUserService {
 	UserVO connection(ConnectionVO connection);
 	
 	UserDO getUser(int id);
+	
+	UserDO getUser(String name);
 }

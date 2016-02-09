@@ -9,6 +9,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.ludomorph.beans.web.ConnectionVO;
+import com.ludomorph.beans.web.FileMusicVO;
 import com.ludomorph.beans.web.UserVO;
 import com.ludomorph.business.IMusicService;
 import com.ludomorph.business.IUserService;
@@ -22,12 +23,9 @@ public class ConnectionAction  extends Action{
 	public ActionForward execute(final ActionMapping mapping, final ActionForm form, final HttpServletRequest req,
 			final HttpServletResponse res) {
 
-		String messageResult;
 		ConnectionVO connection = (ConnectionVO) form;
-		
 		IUserService userService = UserService.getInstance();
 		IMusicService musicService = MusicService.getInstance();
-		
 		UserVO userVO = userService.connection(connection);
 		
 		if(userVO!=null){

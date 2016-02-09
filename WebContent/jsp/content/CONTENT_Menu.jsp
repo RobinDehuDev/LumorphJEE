@@ -28,24 +28,24 @@
 		</logic:notEqual>
 
 		<logic:equal name="page" value="3">
-			<li class="menu-item-selected"><a href="" class="menu-link">Background</a></li>
+			<li class="menu-item-selected"><a href="<%=request.getContextPath()%>/jsp/shape/SHAPE_Background.jsp" class="menu-link">Background</a></li>
 		</logic:equal>
 		<logic:notEqual name="page" value="3">
-			<li class="menu-item"><a href="" class="menu-link">Background</a></li>
+			<li class="menu-item"><a href="<%=request.getContextPath()%>/jsp/shape/SHAPE_Background.jsp" class="menu-link">Background</a></li>
 		</logic:notEqual>
 
 		<logic:equal name="page" value="4">
-			<li class="menu-item-selected"><a href="" class="menu-link">Méchants</a></li>
+			<li class="menu-item-selected"><a href="<%=request.getContextPath()%>/jsp/shape/SHAPE_Enemy.jsp" class="menu-link">Méchants</a></li>
 		</logic:equal>
 		<logic:notEqual name="page" value="4">
-			<li class="menu-item"><a href="" class="menu-link">Méchants</a></li>
+			<li class="menu-item"><a href="<%=request.getContextPath()%>/jsp/shape/SHAPE_Enemy.jsp" class="menu-link">Méchants</a></li>
 		</logic:notEqual>
 
 		<logic:equal name="page" value="5">
-			<li class="menu-item-selected"><a href="" class="menu-link">Pièges</a></li>
+			<li class="menu-item-selected"><a href="<%=request.getContextPath()%>/jsp/shape/SHAPE_Trap.jsp" class="menu-link">Pièges</a></li>
 		</logic:equal>
 		<logic:notEqual name="page" value="5">
-			<li class="menu-item"><a href="" class="menu-link">Pièges</a></li>
+			<li class="menu-item"><a href="<%=request.getContextPath()%>/jsp/shape/SHAPE_Trap.jsp" class="menu-link">Pièges</a></li>
 		</logic:notEqual>
 
 		<logic:equal name="page" value="6">

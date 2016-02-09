@@ -54,6 +54,22 @@ public class UserService implements IUserService {
 		
 		return userDO;
 	}
+	
+	public UserDO getUser(String name) {
+		
+		clearColumnsArgs();
+		UserDO userDO = null;
+		
+		columns.add("name");
+		args.add(name);
+		
+		List<?> list = dao.get(table, columns, args);
+		
+		if(!list.isEmpty())
+			userDO = (UserDO)(list.get(0));
+		
+		return userDO;
+	}
 
 	private UserDO toDO(UserVO userVO){
 		UserDO userDO = new UserDO();
@@ -97,8 +113,6 @@ public class UserService implements IUserService {
 
 	@Override
 	public void register(UserVO registration) {
-	
-		
 		UserDO userDO = toDO(registration);
 		dao.save(userDO);
 	}

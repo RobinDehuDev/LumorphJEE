@@ -31,8 +31,8 @@ public class AddMusicAction extends Action {
 		int user_id = (int) req.getSession().getAttribute("user_id");
 		String messageResult="success";
 		
-		if (musicService.exist(fileMusicVO.getMyFileMusic().getFileName())==false) {
-			musicService.addMusic(user_id,fileMusicVO);	
+		if (musicService.exist(user_id,fileMusicVO.getMyFileMusic().getFileName())==false) {
+			musicService.addMusic(user_id,fileMusicVO,req.getSession().getServletContext().getRealPath("/"));	
 			req.getSession().setAttribute("musics", musicService.getNamesMusics(user_id));
 		} else {
 			final ActionErrors errors = new ActionErrors();
@@ -41,6 +41,5 @@ public class AddMusicAction extends Action {
 		}
 
 		return mapping.findForward(messageResult);
-
 	}
 }

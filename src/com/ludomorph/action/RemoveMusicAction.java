@@ -31,7 +31,7 @@ public class RemoveMusicAction extends Action {
 		
 		String music_name = ((List<String>) req.getSession().getAttribute("musics")).get(index);
 		System.out.println("Remove action done");
-		musicService.removeMusic(user_id, music_name, this.getServlet().getServletContext().getContextPath());
+		musicService.removeMusic(user_id, music_name, req.getSession().getServletContext().getRealPath("/"));
 		req.getSession().setAttribute("musics", musicService.getNamesMusics(user_id));
 		
 		return mapping.findForward("success");

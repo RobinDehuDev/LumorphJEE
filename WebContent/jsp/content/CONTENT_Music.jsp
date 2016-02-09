@@ -12,14 +12,6 @@
 			</TR>
 		</thead>
 
-		<TR>
-			<TD>Default Music</TD>
-			<TD><audio controls>
-					<source src="/Ludomorph/ressources/musics/Default_music.mp3"
-						type="audio/mpeg">
-				</audio></TD>
-			<TD></TD>
-		</TR>
 		<logic:notEmpty name="musics">
 			<logic:iterate name="musics" id="currentMusic" indexId="index">
 				<tbody>
@@ -30,9 +22,13 @@
 									src="/Ludomorph/ressources/musics/${user_id}/<bean:write name="currentMusic"></bean:write>"
 									type="audio/mpeg">
 							</audio></TD>
-						<TD><a class="pure-button pure-button-primary"
+						<TD>
+						<logic:notEqual name="currentMusic" value="Default_music.mp3">
+						<a class="pure-button pure-button-primary"
 							style="background: rgb(202, 60, 60)"
-							href="/Ludomorph/RemoveMusic.do?index=${index}">X</a></TD>
+							href="/Ludomorph/RemoveMusic.do?index=${index}">X</a>
+						</logic:notEqual>
+						</TD>
 					</TR>
 				</tbody>
 			</logic:iterate>
@@ -44,5 +40,8 @@
          <html:submit value="Envoyer Musique"/>
 
    </html:form>
+   <br>
+   <br>
+   <html:errors/>
 
 </div>

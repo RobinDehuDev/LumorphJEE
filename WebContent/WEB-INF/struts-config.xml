@@ -10,6 +10,10 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
 		<form-bean name="connection" type="com.ludomorph.beans.web.ConnectionVO" />
 		<form-bean name="registration" type="com.ludomorph.beans.web.UserVO" />
 		<form-bean name="musicFile" type="com.ludomorph.beans.web.FileMusicVO" />
+		<form-bean name="uploadTrap" type="com.ludomorph.beans.web.SpriteVO" />
+		<form-bean name="uploadEnnemy" type="com.ludomorph.beans.web.SpriteVO" />
+		<form-bean name="uploadCharacter" type="com.ludomorph.beans.web.CharacterVO" />
+		<form-bean name="uploadBackground" type="com.ludomorph.beans.web.SpriteVO" />
 	</form-beans>
 
 	<!-- Définition des Actions -->
@@ -40,6 +44,22 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
 		
 		<action path="/uploadMusicFile" type="com.ludomorph.action.AddMusicAction"  name="musicFile" input="/jsp/shape/SHAPE_Music.jsp">
 			<forward name="success" path="/jsp/shape/SHAPE_Music.jsp" />
+		</action>
+		
+		<action path="/uploadTrap" type="com.ludomorph.action.UploadTrapAction" name="uploadTrap" input="/jsp/shape/SHAPE_Trap.jsp">
+			<forward name="success" path="/jsp/shape/SHAPE_Trap.jsp" />
+		</action>
+		
+		<action path="/uploadEnemy" type="com.ludomorph.action.UploadEnemyAction" name="uploadEnnemy" input="/jsp/shape/SHAPE_Enemy.jsp">
+			<forward name="success" path="/jsp/shape/SHAPE_Enemy.jsp" />
+		</action>
+		
+		<action path="/uploadCharacter" type="com.ludomorph.action.UploadCharacterAction" name="uploadCharacter" input="/jsp/shape/SHAPE_Character.jsp">
+			<forward name="success" path="/jsp/shape/SHAPE_Character.jsp" />
+		</action>
+		
+		<action path="/uploadBackground" type="com.ludomorph.action.UploadBackgroundAction" name="uploadBackground" input="/jsp/shape/SHAPE_Background.jsp">
+			<forward name="success" path="/jsp/shape/SHAPE_Background.jsp" />
 		</action>
 		
 		

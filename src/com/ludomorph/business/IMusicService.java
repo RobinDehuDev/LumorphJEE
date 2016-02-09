@@ -7,7 +7,7 @@ import com.ludomorph.beans.web.FileMusicVO;
 public interface IMusicService {
 
 	List<String> getNamesMusics(int user_id);
-	boolean exist(String name);
-	void removeMusic(int user_id, String music_name, String realpath);
-	void addMusic(int user_id, FileMusicVO fileMusicVO);
+	boolean exist(int user_id,String name);
+	void removeMusic(int user_id, String music_name, String pathContext);
+	void addMusic(int user_id, FileMusicVO fileMusicVO,String pathContext);
 }

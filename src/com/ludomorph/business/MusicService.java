@@ -67,12 +67,16 @@ public class MusicService implements IMusicService {
 	}
 
 	@Override
-	public boolean exist(String name) {
+	public boolean exist(int user_id,String name) {
 
 		boolean res = true;
 
 		clearColumnsArgs();
-
+		
+		UserDO userDO = UserService.getInstance().getUser(user_id);
+		columns.add("user_id");
+		args.add(userDO);
+		
 		columns.add("name");
 		args.add(name);
 
@@ -88,7 +92,7 @@ public class MusicService implements IMusicService {
 	}
 
 	@Override
-	public void removeMusic(int user_id, String music_name, String realpath) {
+	public void removeMusic(int user_id, String music_name, String pathContext) {
 		UserDO userDO = UserService.getInstance().getUser(user_id);
 		clearColumnsArgs();
 
@@ -101,22 +105,24 @@ public class MusicService implements IMusicService {
 		args.add(music_name);
 
 		List<?> list = dao.get(table, columns, args);
+		
 
 		if (!list.isEmpty()) {
 			musicDO = ((MusicDO) list.get(0));
-			dao.delete(musicDO);
+
 			try {
-				Files.delete(Paths.get("C:/javaTP/WorkspaceTP/LumorphJEE/WebContent/ressources/musics/" + user_id + "/"
-						+ music_name));
+				Files.delete(Paths.get(pathContext+"/ressources/musics/" + user_id + "/"+ music_name));
+				dao.delete(musicDO);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
+
 	}
 
 	@Override
-	public void addMusic(int user_id, FileMusicVO fileMusicVO) {
+	public void addMusic(int user_id, FileMusicVO fileMusicVO,String pathContext) {
 		// TODO Auto-generated method stub
 		UserDO userDO = UserService.getInstance().getUser(user_id);
 		clearColumnsArgs();
@@ -124,18 +130,21 @@ public class MusicService implements IMusicService {
 		MusicDO musicDO = new MusicDO(fileMusicVO.getMyFileMusic().getFileName(), "", userDO);
 
 		FormFile fileInput = fileMusicVO.getMyFileMusic();
-		new File("C:/javaTP/WorkspaceTP/LumorphJEE/WebContent/ressources/musics/" + user_id +"/").mkdirs();
-		File file = new File("C:/javaTP/WorkspaceTP/LumorphJEE/WebContent/ressources/musics/" + user_id + "/"+fileInput.getFileName());
+		File folder = new File(pathContext+"/ressources/musics/" + user_id +"/");
+		    if(!folder.exists()){
+		    	folder.mkdirs();
+		    }
+		File file = new File(pathContext+"/ressources/musics/" + user_id + "/"+fileInput.getFileName());
 		FileOutputStream os = null;
 		InputStream is = null;
 
 		int count;
-		byte buf[] = new byte[4096];
+		byte buf[];
 		
 		try {
 			os = new FileOutputStream(file);
 			is = new BufferedInputStream(fileInput.getInputStream());
-			
+			buf = fileInput.getFileData();
 			while ((count = is.read(buf)) > -1) {
 				os.write(buf, 0, count);
 			}
