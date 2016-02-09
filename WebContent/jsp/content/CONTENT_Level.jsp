@@ -162,67 +162,75 @@
 			<br>
 		</div>
 
-		<div id="level">
-			<logic:notEmpty name="dataLevel">
-
-				<table id="mapTableID">
-
-					<logic:iterate name="dataLevel" property="level" id="myLine"
-						indexId="lineID">
-						<tr>
-							<logic:iterate id="cell" name="myLine" indexId="cellID">
-								<td onclick="changeCell(${lineID},${cellID},this)" id="${lineID},${cellID}" class="editCellA"><bean:write
-										name="cell" /></td>
-							</logic:iterate>
-						</tr>
-					</logic:iterate>
-				</table>
-
-			</logic:notEmpty>
-		</div>
-
-		<div id="toolBar">
-			<logic:notEmpty name="objectsData">
-
-				<table id="objectTableID">
-					<logic:iterate name="objectsData" id="object" indexId="objectID">
-						<tr onclick="selectObject(${object.value})"
-							id="<bean:write name="object" property="value"/>">
-							<td class="${object.cssClass}">ok</td>
-							<td><bean:write name="object" property="name" /></td>
-						</tr>
-					</logic:iterate>
-				</table>
-
-			</logic:notEmpty>
-		</div>
-
-		<div>
+		<div id="levelContent">
+			<div id="level">
 			
+				<logic:notEmpty name="dataLevel">
+	
+					<table id="mapTableID">
+	
+						<logic:iterate name="dataLevel" property="level" id="myLine"
+							indexId="lineID">
+							<tr>
+								<logic:iterate id="cell" name="myLine" indexId="cellID">
+									<td onclick="changeCell(${lineID},${cellID},this)" id="${lineID},${cellID}" class="editCellA">
+									<bean:write	name="cell" /></td>
+								</logic:iterate>
+							</tr>
+						</logic:iterate>
+					</table>
+	
+				</logic:notEmpty>
+			
+			</div>
 
-			<html:submit property="submit" styleClass="myButton" onclick="save()">
-				<bean:message key="message.editLevel.save" />
-			</html:submit>
-
+			<div id="toolBar">
+				<logic:notEmpty name="objectsData">
+	
+					<table id="objectTableID">
+						<logic:iterate name="objectsData" id="object" indexId="objectID">
+							<tr onclick="selectObject(${object.value})"
+								id="<bean:write name="object" property="value"/>">
+								<td class="${object.cssClass}">ok</td>
+								<td><bean:write name="object" property="name" /></td>
+							</tr>
+						</logic:iterate>
+					</table>
+	
+				</logic:notEmpty>
+			</div>
+		<div id="confirm">
+			<div>
+				
+	
+				<html:submit property="submit" styleClass="myButton" onclick="save()">
+					<bean:message key="message.editLevel.save" />
+				</html:submit>
+	
+			</div>
+			
+			
+			<html:hidden property="id" value="${dataLevel.id}"/>
+			<html:hidden property="height" value="${dataLevel.height}"/>
+			<html:hidden property="width" value="${dataLevel.width}"/>
+			<html:hidden property="data" value="" styleId="saveData"/>
 		</div>
-		
-	<html:hidden property="id" value="${dataLevel.id}"/>
-	<html:hidden property="height" value="${dataLevel.height}"/>
-	<html:hidden property="width" value="${dataLevel.width}"/>
-	<html:hidden property="data" value="" styleId="saveData"/>
-
-	</html:form>
-	<html:form action="loadMap">
-	
-	<html:select property="id">
-	<html:optionsCollection name="listLevel"
-		label="name" value="id" /></html:select>
-	
-	
-	<html:submit property="submit" styleClass="myButton">
-				<bean:message key="message.editLevel.load" />
-	</html:submit>	
-	</html:form>
 	</div>
+		</html:form>
+	<div>
+		<html:form action="loadMap">
+		
+		<html:select property="id">
+		<html:optionsCollection name="listLevel"
+			label="name" value="id" /></html:select>
+		
+		
+		<html:submit property="submit" styleClass="myButton">
+					<bean:message key="message.editLevel.load" />
+		</html:submit>	
+		</html:form>
+		</div>
+	</div>
+	
 </body>
 </html>

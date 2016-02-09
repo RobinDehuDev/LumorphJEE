@@ -94,6 +94,7 @@ body{
 	
 	.content{
 		margin: 2%;
+		overflow:hidden;
 	}
 
 
@@ -157,56 +158,73 @@ body{
 		
 /* Edit Page */
 
-		#editContent{
-			width:99%;
-			height:99%%;
-			overflow: hidden;		
+		#levelContent{
+			width:80%;
+			height:40%;
 		}
 		#level{
-			float:left;
-			width:80%;
-			height:90%%;
+			float: left;
+			width:75%;
+			height:50%%;
 			overflow: auto;
+			cursor:pointer;
+			padding:15px;
 		}
 		
 		#toolBar{
 			float:right;
 			width:19%;
+			cursor:pointer;
 		}
 		
-		#maptableID{
-			 border: 1px solid black;
-			 padding:5;
+		#confirm{
+			top:2%;
 		}
+		
+		
+		
+		
 		
 		.editCellA{
-			width:100;
-			height:100;
+			width:24px;
+			height:24px;
 			background-color:white;
+			border: 1px solid black;
+			color: transparent;
 		}
 		
 		.editCellB{
-			width:100;
-			height:100;
+			width:24px;
+			height:24px;
 			background-color:blue;
+			border: 1px solid black;
+			color: transparent;
 		}
 		.editCellC{
-			width:100;
-			height:100;
+			width:24px;
+			height:24px;
 			background-color:green;
+			border: 1px solid black;
+			color: transparent;
 		}
 		.editCellD{
-			width:100;
-			height:100;
+			width:24px;
+			height:24px;
 			background-color:black;
+			border: 1px solid black;
+			color: transparent;
 		}
 		.editCellE{
-			width:100;
-			height:100;
+			width:24px;
+			height:24px;
 			background-color:red;
+			border: 1px solid black;
+			color: transparent;
 		}
 		.editCellF{
-			width:100;
-			height:100;
+			width:24px;
+			height:24px;
 			background-color:orange;
+			border: 1px solid black;
+			color: transparent;
 		}
