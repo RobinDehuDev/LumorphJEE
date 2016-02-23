@@ -34,10 +34,8 @@
 	</html:form>
 </logic:empty>
 <logic:notEmpty name="user_name">
-	<br>
-	<br>
-	<br>
 	<div>
+	<br><br><br>
 		<jsp:useBean id="user_name" scope="session"
 			class="java.lang.String" />
 		<p>Bienvenue</p>
