@@ -15,7 +15,7 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
 		<form-bean name="uploadTrap" type="com.ludomorph.beans.web.SpriteVO" />
 		<form-bean name="uploadEnnemy" type="com.ludomorph.beans.web.SpriteVO" />
 		<form-bean name="uploadCharacter" type="com.ludomorph.beans.web.CharacterVO" />
-		<form-bean name="uploadBackground" type="com.ludomorph.beans.web.SpriteVO" />
+		<form-bean name="uploadBackground" type="com.ludomorph.beans.web.BackgroundVO" />
 	</form-beans>
 
 	<!-- Définition des Actions -->

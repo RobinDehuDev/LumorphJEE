@@ -1,1 +1,3 @@
-<p>Bonjour</p>
+<div class="content">
+	<p>Bonjour</p>
+</div>

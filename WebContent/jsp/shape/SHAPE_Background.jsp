@@ -13,7 +13,7 @@
 </head>
 <body>
 	<% session.setAttribute("page","3"); %>
-	<div id="top_page">
+
 	
 		<div id="connection_container">
 			<jsp:include page="/jsp/content/CONTENT_Connection.jsp" />
@@ -23,14 +23,14 @@
 				<jsp:include page="/jsp/content/CONTENT_Banner.jsp" />
 			</div>
 		</a>
-	</div>
-	<div id="bottom_page">
+
+
 		<div id="menu">
 			<jsp:include page="/jsp/content/CONTENT_Menu.jsp" />
 		</div>
 		<div id="content_container">
 			<jsp:include page="/jsp/content/CONTENT_Background.jsp" />
 		</div>
-	</div>
+
 </body>
 </html>

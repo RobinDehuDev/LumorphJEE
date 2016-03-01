@@ -1,1 +1,1 @@
-<h1>LudoMorph</h1>
+<h1 style="text-shadow: 2px 2px 2px black;">LudoMorph</h1>
